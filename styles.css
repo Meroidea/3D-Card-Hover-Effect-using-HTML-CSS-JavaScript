@@ -2,7 +2,7 @@
     --card-radius: 1rem;
     --card-bg: #14161b;
     --card-fg: #ffffff;
-    --card-accent: #7a98b9;
+    --card-accent: #f0a500;
     --card-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
     --card-shadow-hover: 0 25px 60px rgba(0, 0, 0, 0.6);
 }
@@ -15,23 +15,41 @@ body {
     font-family: "Segoe UI", Arial, sans-serif;
     margin: 0;
     min-height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 1.5rem;
-    background: radial-gradient(circle at 50% 20%, #2a2f3a, #0b0d11);
+    padding: 2rem 1.5rem;
+    color: var(--card-fg);
+    background: radial-gradient(circle at 50% 0%, #2a2f3a, #0b0d11);
 }
 
-.card-container {
+.page-header {
+    text-align: center;
+    margin: 0 auto 2.5rem;
+    max-width: 40rem;
+}
+
+.page-header h1 {
+    margin: 0 0 0.5rem;
+    font-size: clamp(1.6rem, 4vw, 2.5rem);
+    font-weight: 800;
+}
+
+.page-header p {
+    margin: 0;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 18rem), 1fr));
+    gap: 2rem;
+    max-width: 72rem;
+    margin: 0 auto;
+    /* Shared 3D perspective for every card in the gallery. */
     perspective: 1000px;
 }
 
 .card-body {
-    width: 100%;
-    max-width: 30rem;
     padding: 1.5rem;
     background-color: var(--card-bg);
-    color: var(--card-fg);
     border: 1px solid rgba(255, 255, 255, 0.08);
     border-radius: var(--card-radius);
     box-shadow: var(--card-shadow);
@@ -46,18 +64,17 @@ body {
 
 .card-title {
     margin: 0;
-    font-size: 1.75rem;
+    font-size: 1.5rem;
     font-weight: 800;
     text-align: center;
     text-shadow: 1px 2px 3px rgba(0, 0, 0, 0.8);
 }
 
 .card-description {
-    margin: 0.5rem 0 0;
+    margin: 0.4rem 0 0;
     font-weight: 500;
     text-align: center;
-    color: rgba(255, 255, 255, 0.85);
-    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+    color: rgba(255, 255, 255, 0.75);
 }
 
 .card-image {
@@ -67,10 +84,10 @@ body {
 .card-image img {
     display: block;
     width: 100%;
-    height: auto;
-    max-height: 15rem;
+    height: 15rem;
     object-fit: cover;
     border-radius: 0.75rem;
+    background-color: #0b0d11;
     box-shadow: 5px 10px 20px rgba(0, 0, 0, 0.4);
     transition: box-shadow 0.3s ease;
 }
@@ -88,11 +105,11 @@ body {
 }
 
 .card-link {
-    padding: 0.5rem 1rem;
-    border-radius: 0.5rem;
-    font-size: 0.75rem;
+    padding: 0.5rem 0;
+    font-size: 0.8rem;
     color: var(--card-fg);
     text-decoration: none;
+    white-space: nowrap;
     transition: color 0.3s ease;
 }
 
@@ -107,7 +124,7 @@ body {
     border-radius: 0.5rem;
     background-color: #ffffff;
     color: #000000;
-    font-size: 0.75rem;
+    font-size: 0.8rem;
     cursor: pointer;
     box-shadow: 1px 2px 5px rgba(0, 0, 0, 0.6);
     transition: background-color 0.3s ease, color 0.3s ease;
@@ -119,24 +136,20 @@ body {
     color: #000000;
 }
 
+.page-footer {
+    margin-top: 3rem;
+    text-align: center;
+    font-size: 0.8rem;
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.page-footer a {
+    color: rgba(255, 255, 255, 0.85);
+}
+
 /* Respect users who prefer reduced motion. */
 @media (prefers-reduced-motion: reduce) {
     .card-body {
         transition: box-shadow 0.3s ease;
-    }
-}
-
-@media (max-width: 30rem) {
-    .card-title {
-        font-size: 1.4rem;
-    }
-
-    .card-actions {
-        flex-direction: column;
-        align-items: stretch;
-    }
-
-    .card-button {
-        width: 100%;
     }
 }

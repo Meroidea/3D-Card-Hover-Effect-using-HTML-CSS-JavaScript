@@ -3,24 +3,100 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="An interactive 3D card that tilts toward the pointer, built with plain HTML, CSS and JavaScript.">
-    <title>3D Card Hover Effect</title>
+    <meta name="description" content="A gallery of interactive 3D cards featuring Hindu gods and goddesses, built with plain HTML, CSS and JavaScript.">
+    <title>3D Card Hover Effect · Hindu Deities</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <main class="card-container">
-        <article class="card-body" aria-label="3D hover card">
-            <h1 class="card-item card-title" lang="sa">ॐ नमः शिवाय</h1>
-            <p class="card-item card-description" lang="hi">हर हर महादेव · हर हर महादेव · हर हर महादेव</p>
+    <header class="page-header">
+        <h1>Hindu Gods &amp; Goddesses</h1>
+        <p>Hover over a card to tilt it in 3D.</p>
+    </header>
+
+    <main class="card-grid">
+        <article class="card-body" aria-label="Shiva">
+            <h2 class="card-item card-title" lang="sa">ॐ नमः शिवाय</h2>
+            <p class="card-item card-description">Shiva — the Destroyer</p>
             <figure class="card-item card-image">
-                <img src="shiva.avif" alt="Portrait of Lord Shiva" width="480" height="240" loading="lazy">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/52/Bangalore_Shiva.jpg/500px-Bangalore_Shiva.jpg"
+                     alt="Statue of Lord Shiva in Bangalore" loading="lazy">
             </figure>
             <div class="card-actions">
-                <a href="mailto:sujan.philomath@gmail.com" class="card-item card-link" lang="hi">जय भोलेनाथ →</a>
-                <button type="button" class="card-item card-button" lang="hi">जय महादेव</button>
+                <a class="card-item card-link" href="https://en.wikipedia.org/wiki/Shiva" target="_blank" rel="noopener noreferrer">Learn more →</a>
+                <button type="button" class="card-item card-button" lang="hi">हर हर महादेव</button>
+            </div>
+        </article>
+
+        <article class="card-body" aria-label="Ganesha">
+            <h2 class="card-item card-title" lang="sa">ॐ गं गणपतये नमः</h2>
+            <p class="card-item card-description">Ganesha — Remover of Obstacles</p>
+            <figure class="card-item card-image">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/64/Ganesha_Basohli_miniature_circa_1730_Dubost_p73.jpg/500px-Ganesha_Basohli_miniature_circa_1730_Dubost_p73.jpg"
+                     alt="Basohli miniature painting of Ganesha, circa 1730" loading="lazy">
+            </figure>
+            <div class="card-actions">
+                <a class="card-item card-link" href="https://en.wikipedia.org/wiki/Ganesha" target="_blank" rel="noopener noreferrer">Learn more →</a>
+                <button type="button" class="card-item card-button" lang="hi">जय गणेश</button>
+            </div>
+        </article>
+
+        <article class="card-body" aria-label="Krishna">
+            <h2 class="card-item card-title" lang="sa">हरे कृष्ण</h2>
+            <p class="card-item card-description">Krishna — the Divine Cowherd</p>
+            <figure class="card-item card-image">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a9/Krishna_Holds_Up_Mount_Govardhan_%28MET_70694%29_cropped.png/500px-Krishna_Holds_Up_Mount_Govardhan_%28MET_70694%29_cropped.png"
+                     alt="Painting of Krishna holding up Mount Govardhan" loading="lazy">
+            </figure>
+            <div class="card-actions">
+                <a class="card-item card-link" href="https://en.wikipedia.org/wiki/Krishna" target="_blank" rel="noopener noreferrer">Learn more →</a>
+                <button type="button" class="card-item card-button" lang="hi">जय श्री कृष्ण</button>
+            </div>
+        </article>
+
+        <article class="card-body" aria-label="Lakshmi">
+            <h2 class="card-item card-title" lang="sa">ॐ श्री महालक्ष्म्यै नमः</h2>
+            <p class="card-item card-description">Lakshmi — Goddess of Fortune</p>
+            <figure class="card-item card-image">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a6/Raja_Ravi_Varma%2C_Goddess_Lakshmi%2C_1896.jpg/500px-Raja_Ravi_Varma%2C_Goddess_Lakshmi%2C_1896.jpg"
+                     alt="Raja Ravi Varma's 1896 painting of Goddess Lakshmi" loading="lazy">
+            </figure>
+            <div class="card-actions">
+                <a class="card-item card-link" href="https://en.wikipedia.org/wiki/Lakshmi" target="_blank" rel="noopener noreferrer">Learn more →</a>
+                <button type="button" class="card-item card-button" lang="hi">जय माता लक्ष्मी</button>
+            </div>
+        </article>
+
+        <article class="card-body" aria-label="Durga">
+            <h2 class="card-item card-title" lang="sa">या देवी सर्वभूतेषु</h2>
+            <p class="card-item card-description">Durga — the Invincible Mother</p>
+            <figure class="card-item card-image">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/Mahishasura-Mardini_Durga.jpg/500px-Mahishasura-Mardini_Durga.jpg"
+                     alt="Depiction of Goddess Durga as Mahishasura-Mardini" loading="lazy">
+            </figure>
+            <div class="card-actions">
+                <a class="card-item card-link" href="https://en.wikipedia.org/wiki/Durga" target="_blank" rel="noopener noreferrer">Learn more →</a>
+                <button type="button" class="card-item card-button" lang="hi">जय माता दी</button>
+            </div>
+        </article>
+
+        <article class="card-body" aria-label="Hanuman">
+            <h2 class="card-item card-title" lang="sa">ॐ हं हनुमते नमः</h2>
+            <p class="card-item card-description">Hanuman — the Devoted Protector</p>
+            <figure class="card-item card-image">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/26/Hanuman_Statue_at_Sidhheshwar_Temple%2C_Chhindwara%2C_MP.jpg/500px-Hanuman_Statue_at_Sidhheshwar_Temple%2C_Chhindwara%2C_MP.jpg"
+                     alt="Statue of Hanuman at Sidhheshwar Temple, Chhindwara" loading="lazy">
+            </figure>
+            <div class="card-actions">
+                <a class="card-item card-link" href="https://en.wikipedia.org/wiki/Hanuman" target="_blank" rel="noopener noreferrer">Learn more →</a>
+                <button type="button" class="card-item card-button" lang="hi">जय बजरंगबली</button>
             </div>
         </article>
     </main>
+
+    <footer class="page-footer">
+        <p>Images courtesy of <a href="https://commons.wikimedia.org/" target="_blank" rel="noopener noreferrer">Wikimedia Commons</a>.</p>
+    </footer>
+
     <script src="script.js"></script>
 </body>
 </html>
