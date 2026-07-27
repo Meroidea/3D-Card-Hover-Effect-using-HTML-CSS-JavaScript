@@ -1,36 +1,78 @@
-const card = document.querySelector(".card-body");
+/**
+ * 3D card hover effect.
+ *
+ * Tilts the card toward the pointer using a requestAnimationFrame loop that
+ * runs only while the pointer is over the card. Honours the user's
+ * "prefers-reduced-motion" setting and degrades gracefully on touch devices.
+ */
+(function () {
+  "use strict";
 
-let mouseX = 0;
-let mouseY = 0;
-let cardX = 0;
-let cardY = 0;
-let isHovering = false;
-
-card.addEventListener("mousemove", (e) => {
-  const cardRect = card.getBoundingClientRect();
-  cardX = cardRect.left + cardRect.width / 2;
-  cardY = cardRect.top + cardRect.height / 2;
-  mouseX = e.clientX;
-  mouseY = e.clientY;
-  if (!isHovering) {
-    isHovering = true;
-    animateCard();
+  const card = document.querySelector(".card-body");
+  if (!card) {
+    return;
   }
-});
 
-card.addEventListener("mouseleave", () => {
-  isHovering = false;
-  card.style.transform = "rotateX(0) rotateY(0) translateZ(0)";
-});
+  const prefersReducedMotion = window.matchMedia(
+    "(prefers-reduced-motion: reduce)"
+  );
 
-function animateCard() {
-  if (!isHovering) return;
+  // Higher divisor = gentler tilt. TRANSLATE_Z lifts the card toward the viewer.
+  const ROTATION_DIVISOR = 7;
+  const TRANSLATE_Z = 130;
+  const RESTING_TRANSFORM = "rotateX(0) rotateY(0) translateZ(0)";
 
-  const angleX = (cardY - mouseY) / 7;
-  const angleY = (cardX - mouseX) / -7;
-  const translateZ = 130; // Set a constant value for depth
+  let pointerX = 0;
+  let pointerY = 0;
+  let isHovering = false;
+  let frameId = null;
 
-  card.style.transform = `rotateX(${angleX}deg) rotateY(${angleY}deg) translateZ(${translateZ}px)`;
+  function resetCard() {
+    card.style.transform = RESTING_TRANSFORM;
+  }
 
-  requestAnimationFrame(animateCard);
-}
+  function animateCard() {
+    if (!isHovering) {
+      frameId = null;
+      return;
+    }
+
+    const rect = card.getBoundingClientRect();
+    const centerX = rect.left + rect.width / 2;
+    const centerY = rect.top + rect.height / 2;
+
+    const angleX = (centerY - pointerY) / ROTATION_DIVISOR;
+    const angleY = (centerX - pointerX) / -ROTATION_DIVISOR;
+
+    card.style.transform =
+      `rotateX(${angleX}deg) rotateY(${angleY}deg) translateZ(${TRANSLATE_Z}px)`;
+
+    frameId = requestAnimationFrame(animateCard);
+  }
+
+  function handlePointerMove(event) {
+    if (prefersReducedMotion.matches) {
+      return;
+    }
+    pointerX = event.clientX;
+    pointerY = event.clientY;
+    if (!isHovering) {
+      isHovering = true;
+      frameId = requestAnimationFrame(animateCard);
+    }
+  }
+
+  function handlePointerLeave() {
+    isHovering = false;
+    if (frameId !== null) {
+      cancelAnimationFrame(frameId);
+      frameId = null;
+    }
+    resetCard();
+  }
+
+  // Pointer events cover mouse, pen and touch with a single code path.
+  card.addEventListener("pointermove", handlePointerMove);
+  card.addEventListener("pointerleave", handlePointerLeave);
+  card.addEventListener("pointercancel", handlePointerLeave);
+})();

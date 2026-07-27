@@ -1,12 +1,25 @@
+:root {
+    --card-radius: 1rem;
+    --card-bg: #14161b;
+    --card-fg: #ffffff;
+    --card-accent: #7a98b9;
+    --card-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+    --card-shadow-hover: 0 25px 60px rgba(0, 0, 0, 0.6);
+}
+
+* {
+    box-sizing: border-box;
+}
+
 body {
-    font-family: Arial, sans-serif;
+    font-family: "Segoe UI", Arial, sans-serif;
     margin: 0;
-    padding: 0;
-    background-color: #ffffff;
+    min-height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    padding: 1.5rem;
+    background: radial-gradient(circle at 50% 20%, #2a2f3a, #0b0d11);
 }
 
 .card-container {
@@ -14,44 +27,52 @@ body {
 }
 
 .card-body {
-    background-color: #ffffff; 
-    width: auto;
+    width: 100%;
     max-width: 30rem;
     padding: 1.5rem;
-    transition: transform 0.1s;
+    background-color: var(--card-bg);
+    color: var(--card-fg);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: var(--card-radius);
+    box-shadow: var(--card-shadow);
     transform-style: preserve-3d;
-    
+    transition: box-shadow 0.3s ease, transform 0.1s ease;
+    will-change: transform;
 }
-.card-body:hover{
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
-    background-image: url(shiva.avif);
-    border-radius: 1rem;
-    border: 1px solid rgba(0, 0, 0, 0.1);
+
+.card-body:hover {
+    box-shadow: var(--card-shadow-hover);
 }
 
 .card-title {
-    font-size: 28px;
+    margin: 0;
+    font-size: 1.75rem;
     font-weight: 800;
     text-align: center;
-    color: #ffffff;
-    text-shadow: 1px 2px 3px rgba(0, 0, 0, 1);
+    text-shadow: 1px 2px 3px rgba(0, 0, 0, 0.8);
 }
 
 .card-description {
-    color: #ffffff;
-    text-align: center;
-    margin-top: 0.5rem;
-    text-shadow: 1px 1px 2px rgba(0, 0, 0, 1);
+    margin: 0.5rem 0 0;
     font-weight: 500;
+    text-align: center;
+    color: rgba(255, 255, 255, 0.85);
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+}
+
+.card-image {
+    margin: 1.25rem 0 0;
 }
 
 .card-image img {
+    display: block;
     width: 100%;
     height: auto;
     max-height: 15rem;
     object-fit: cover;
     border-radius: 0.75rem;
-    transition: box-shadow 0.3s, transform 0.3s;
+    box-shadow: 5px 10px 20px rgba(0, 0, 0, 0.4);
+    transition: box-shadow 0.3s ease;
 }
 
 .card-body:hover .card-image img {
@@ -62,6 +83,7 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    gap: 1rem;
     margin-top: 1.25rem;
 }
 
@@ -69,28 +91,52 @@ body {
     padding: 0.5rem 1rem;
     border-radius: 0.5rem;
     font-size: 0.75rem;
-    color: #000;
+    color: var(--card-fg);
     text-decoration: none;
-    transition: color 0.3s;
+    transition: color 0.3s ease;
 }
 
-.card-link:hover {
-    color: #0070f3;
+.card-link:hover,
+.card-link:focus-visible {
+    color: var(--card-accent);
 }
 
 .card-button {
     padding: 0.5rem 1rem;
+    border: none;
     border-radius: 0.5rem;
     background-color: #ffffff;
     color: #000000;
     font-size: 0.75rem;
-    box-shadow: 1px 2px 5px rgba(0, 0, 0, 0.6);
-    border: none;
     cursor: pointer;
-    transition: background-color 0.3s;
+    box-shadow: 1px 2px 5px rgba(0, 0, 0, 0.6);
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-.card-button:hover {
-    color: rgb(0, 0, 0);
-    background-color: #7a98b9;
+.card-button:hover,
+.card-button:focus-visible {
+    background-color: var(--card-accent);
+    color: #000000;
+}
+
+/* Respect users who prefer reduced motion. */
+@media (prefers-reduced-motion: reduce) {
+    .card-body {
+        transition: box-shadow 0.3s ease;
+    }
+}
+
+@media (max-width: 30rem) {
+    .card-title {
+        font-size: 1.4rem;
+    }
+
+    .card-actions {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .card-button {
+        width: 100%;
+    }
 }

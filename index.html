@@ -3,23 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>3D Card on Hover | Sujan Darji</title>
+    <meta name="description" content="An interactive 3D card that tilts toward the pointer, built with plain HTML, CSS and JavaScript.">
+    <title>3D Card Hover Effect</title>
     <link rel="stylesheet" href="styles.css">
 </head>
-<body oncontextmenu="return false">
-    <div class="card-container">
-        <div class="card-body">
-            <div class="card-item card-title">ॐ नमः शिवाय</div>
-            <p class="card-item card-description">हर हर महादेव | हर हर महादेव | हर हर महादेव | हर हर महादेव </p>
-            <div class="card-item card-image">
-                <img src="shiva.avif" alt="thumbnail">
-            </div>
+<body>
+    <main class="card-container">
+        <article class="card-body" aria-label="3D hover card">
+            <h1 class="card-item card-title" lang="sa">ॐ नमः शिवाय</h1>
+            <p class="card-item card-description" lang="hi">हर हर महादेव · हर हर महादेव · हर हर महादेव</p>
+            <figure class="card-item card-image">
+                <img src="shiva.avif" alt="Portrait of Lord Shiva" width="480" height="240" loading="lazy">
+            </figure>
             <div class="card-actions">
-                <a href="mailto:sujan.philomath@gmail.com" target="__blank" class="card-item card-link">जय भोलेनाथ →</a>
-                <button class="card-item card-button">जय महादेव</button>
+                <a href="mailto:sujan.philomath@gmail.com" class="card-item card-link" lang="hi">जय भोलेनाथ →</a>
+                <button type="button" class="card-item card-button" lang="hi">जय महादेव</button>
             </div>
-        </div>
-    </div>
+        </article>
+    </main>
     <script src="script.js"></script>
 </body>
 </html>
